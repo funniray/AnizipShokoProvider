@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics;
+using System.Reflection;
 using AnizipProvider.model;
 using Microsoft.Extensions.Logging;
 using Shoko.Plugin.Abstractions.DataModels;
@@ -14,7 +15,13 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
     /// <inheritdoc/>
     public async Task<ReleaseInfo?> GetReleaseInfoForVideo(IVideo video, CancellationToken cancellationToken)
     {
+        var timer = new Stopwatch();
+        timer.Start();
         var file = await anizipClient.GetAnizipFileByED2K(video.ED2K);
+        var time = timer.ElapsedMilliseconds;
+        
+        logger.LogInformation($"Looked up ED2K {video.ED2K} in {time}ms");
+        
         var info = ConvertFile(file);
 
         if (info is not null)
@@ -103,7 +110,12 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
     /// <inheritdoc/>
     public async Task<ReleaseInfo?> GetReleaseInfoById(string releaseId, CancellationToken cancellationToken)
     {
+        var timer = new Stopwatch();
+        timer.Start();
         var file = await anizipClient.GetAnizipFileById(releaseId);
+        var time = timer.ElapsedMilliseconds;
+        
+        logger.LogInformation($"Looked up FileID {releaseId} in {time}ms");
 
         var info = ConvertFile(file);
 
