@@ -10,11 +10,12 @@ using Shoko.Plugin.Abstractions.Services;
 
 namespace AnizipProvider;
 
-public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> logger, IAniDBService aniDbService) : IReleaseInfoProvider<AnizipConfiguration>
+public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> logger, IAnidbService aniDbService) : IReleaseInfoProvider<AnizipConfiguration>
 {
     /// <inheritdoc/>
-    public async Task<ReleaseInfo?> GetReleaseInfoForVideo(IVideo video, CancellationToken cancellationToken)
+    public async Task<ReleaseInfo?> GetReleaseInfoForVideo(ReleaseInfoRequest request, CancellationToken cancellationToken)
     {
+        var video = request.Video;
         var timer = new Stopwatch();
         timer.Start();
         var file = await anizipClient.GetAnizipFileByED2K(video.ED2K);
