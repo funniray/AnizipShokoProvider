@@ -2,7 +2,6 @@
 using System.Reflection;
 using AnizipProvider.model;
 using Microsoft.Extensions.Logging;
-using Shoko.Plugin.Abstractions.DataModels;
 using Shoko.Plugin.Abstractions.Enums;
 using Shoko.Plugin.Abstractions.Hashing;
 using Shoko.Plugin.Abstractions.Release;
@@ -10,19 +9,25 @@ using Shoko.Plugin.Abstractions.Services;
 
 namespace AnizipProvider;
 
+/// <summary>
+/// AniZip Provider.
+/// </summary>
+/// <param name="anizipClient">API Client</param>
+/// <param name="logger">Logger</param>
+/// <param name="aniDbService">AniDB Service</param>
 public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> logger, IAnidbService aniDbService) : IReleaseInfoProvider<AnizipConfiguration>
 {
     /// <inheritdoc/>
-    public async Task<ReleaseInfo?> GetReleaseInfoForVideo(ReleaseInfoRequest request, CancellationToken cancellationToken)
+    public async Task<ReleaseInfo?> GetReleaseInfoForVideo(ReleaseInfoContext context, CancellationToken cancellationToken)
     {
-        var video = request.Video;
+        var (video, _) = context;
         var timer = new Stopwatch();
         timer.Start();
         var file = await anizipClient.GetAnizipFileByED2K(video.ED2K);
         var time = timer.ElapsedMilliseconds;
-        
+
         logger.LogInformation($"Looked up ED2K {video.ED2K} in {time}ms");
-        
+
         var info = ConvertFile(file);
 
         if (info is not null)
@@ -48,9 +53,9 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
         if (file is null) { return null; }
 
         List<ReleaseVideoCrossReference> xref = [new() { AnidbAnimeID = file.AnimeId, AnidbEpisodeID = file.EpisodeId }];
-        
+
         ReleaseGroup? group = null;
-        
+
         if (file.Group is not null)
         {
             group = new()
@@ -66,9 +71,9 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
         {
             xref.Add(new()
             {
-                AnidbAnimeID = relation.AnimeId, 
-                AnidbEpisodeID = relation.EpisodeId, 
-                PercentageEnd = relation.EndPercentage, 
+                AnidbAnimeID = relation.AnimeId,
+                AnidbEpisodeID = relation.EpisodeId,
+                PercentageEnd = relation.EndPercentage,
                 PercentageStart = relation.StartPercentage
             });
         }
@@ -115,7 +120,7 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
         timer.Start();
         var file = await anizipClient.GetAnizipFileById(releaseId);
         var time = timer.ElapsedMilliseconds;
-        
+
         logger.LogInformation($"Looked up FileID {releaseId} in {time}ms");
 
         var info = ConvertFile(file);

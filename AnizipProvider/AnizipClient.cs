@@ -5,7 +5,6 @@ using Microsoft.Extensions.Logging;
 using Shoko.Plugin.Abstractions.Config;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 
 namespace AnizipProvider;
 

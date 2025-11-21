@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Shoko.Plugin.Abstractions.Enums;
+﻿using Shoko.Plugin.Abstractions.Enums;
 
 namespace AnizipProvider.model;
 
