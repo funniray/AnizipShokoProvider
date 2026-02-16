@@ -2,10 +2,10 @@
 using System.Reflection;
 using AnizipProvider.model;
 using Microsoft.Extensions.Logging;
-using Shoko.Plugin.Abstractions.Enums;
-using Shoko.Plugin.Abstractions.Hashing;
-using Shoko.Plugin.Abstractions.Release;
-using Shoko.Plugin.Abstractions.Services;
+using Shoko.Abstractions.Enums;
+using Shoko.Abstractions.Hashing;
+using Shoko.Abstractions.Release;
+using Shoko.Abstractions.Services;
 
 namespace AnizipProvider;
 

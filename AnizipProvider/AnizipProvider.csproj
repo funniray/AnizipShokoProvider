@@ -16,13 +16,8 @@
     </ItemDefinitionGroup>
 
     <!-- Shoko Core -->
-    <ItemGroup
-        Condition="Exists('../../ShokoServer/Shoko.Plugin.Abstractions/Shoko.Plugin.Abstractions.csproj')">
-        <ProjectReference Include="../../ShokoServer/Shoko.Plugin.Abstractions/Shoko.Plugin.Abstractions.csproj" />
-    </ItemGroup>
-    <ItemGroup
-        Condition="!Exists('../../ShokoServer/Shoko.Plugin.Abstractions/Shoko.Plugin.Abstractions.csproj')">
-        <PackageReference Include="Shoko.Plugin.Abstractions" Version="5.0.0-alpha1" />
+    <ItemGroup>
+        <PackageReference Include="Shoko.Abstractions" Version="6.0.0-alpha.1" />
     </ItemGroup>
 
     <ItemGroup>

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using Shoko.Plugin.Abstractions.Config;
-using Shoko.Plugin.Abstractions.Config.Attributes;
-using Shoko.Plugin.Abstractions.Config.Enums;
+using Shoko.Abstractions.Config;
+using Shoko.Abstractions.Config.Attributes;
+using Shoko.Abstractions.Config.Enums;
 
 namespace AnizipProvider.model;
 

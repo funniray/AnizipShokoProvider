@@ -2,7 +2,7 @@
 using System.Reflection;
 using AnizipProvider.model;
 using Microsoft.Extensions.Logging;
-using Shoko.Plugin.Abstractions.Config;
+using Shoko.Abstractions.Config;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
