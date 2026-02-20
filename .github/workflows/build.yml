@@ -11,9 +11,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x'
       - run: dotnet build --configuration Release
       - uses: actions/upload-artifact@v4
         with:
           name: Package
-          path: AnizipProvider/bin/Release/net8/*
+          path: AnizipProvider/bin/Release/net10/*
