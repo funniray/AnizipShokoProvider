@@ -7,7 +7,7 @@ namespace AnizipProvider;
 public class PluginServiceRegistration : IPluginServiceRegistration
 {
     /// <inheritdoc/>
-    public void RegisterServices(IServiceCollection serviceCollection, IApplicationPaths applicationPaths)
+    public static void RegisterServices(IServiceCollection serviceCollection, IApplicationPaths applicationPaths)
     {
         serviceCollection.AddSingleton<AnizipClient>();
     }
