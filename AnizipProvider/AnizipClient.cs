@@ -27,11 +27,17 @@ public class AnizipClient
     {
         _configurationProvider = configurationProvider;
         _logger = logger;
-        
-        _httpClient = new HttpClient();
-        _httpClient.DefaultRequestVersion = HttpVersion.Version20;
+
+        _httpClient = new(new SocketsHttpHandler()
+        {
+            AutomaticDecompression = DecompressionMethods.All,
+        })
+        {
+            DefaultRequestVersion = HttpVersion.Version20,
+        };
         _httpClient.DefaultRequestHeaders.Add("User-Agent", $"AnizipShokoProvider ({_version})");
         _httpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+        _httpClient.DefaultRequestHeaders.Add("Accept-Encoding", "deflate, zstd;q=1.0, gzip;q=0.9, br;q=0.8, *;q=0.3");
     }
 
     private AnizipConfiguration GetConfig()
