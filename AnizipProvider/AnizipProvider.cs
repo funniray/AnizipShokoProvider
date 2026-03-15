@@ -125,15 +125,6 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
 
         var info = ConvertFile(file);
 
-        if (info is not null)
-        {
-            foreach (var animeId in info.CrossReferences.Select(xref => xref.AnidbAnimeID).Distinct())
-            {
-                if (animeId is null) {continue;}
-                await aniDbService.RefreshByID(animeId.Value, AnidbRefreshMethod.Default, cancellationToken: cancellationToken);
-            }
-        }
-
         return info;
     }
 
