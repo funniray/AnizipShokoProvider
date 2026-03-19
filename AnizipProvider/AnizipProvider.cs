@@ -78,7 +78,7 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
             });
         }
 
-        List<HashDigest> hashes = [];
+        List<HashDigest> hashes = [new() { Type = "ED2K", Value = file.ED2K }];
 
         if (file.CRC32 is { Length: > 0 })
         {
