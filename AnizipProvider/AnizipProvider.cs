@@ -80,17 +80,17 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
 
         List<HashDigest> hashes = [];
 
-        if (file.CRC32 is not null)
+        if (file.CRC32 is { Length: > 0 })
         {
             hashes.Add(new() {Type = "CRC32", Value = file.CRC32});
         }
 
-        if (file.SHA1 is not null)
+        if (file.SHA1 is { Length: > 0 })
         {
             hashes.Add(new () {Type = "SHA1", Value = file.SHA1});
         }
 
-        if (file.MD5 is not null)
+        if (file.MD5 is { Length: > 0 })
         {
             hashes.Add(new () {Type = "MD5", Value = file.MD5});
         }
