@@ -17,7 +17,7 @@
 
     <!-- Shoko Core -->
     <ItemGroup>
-        <PackageReference Include="Shoko.Abstractions" Version="6.0.0-alpha.11" />
+        <PackageReference Include="Shoko.Abstractions" Version="6.0.0-alpha.13" />
     </ItemGroup>
 
     <ItemGroup>

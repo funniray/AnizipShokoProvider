@@ -2,10 +2,10 @@
 using System.Reflection;
 using AnizipProvider.model;
 using Microsoft.Extensions.Logging;
-using Shoko.Abstractions.Enums;
-using Shoko.Abstractions.Hashing;
-using Shoko.Abstractions.Release;
-using Shoko.Abstractions.Services;
+using Shoko.Abstractions.Metadata.Anidb.Enums;
+using Shoko.Abstractions.Metadata.Anidb.Services;
+using Shoko.Abstractions.Video.Hashing;
+using Shoko.Abstractions.Video.Release;
 
 namespace AnizipProvider;
 
@@ -35,7 +35,7 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
             foreach (var animeId in info.CrossReferences.Select(xref => xref.AnidbAnimeID).Distinct())
             {
                 if (animeId is null) {continue;}
-                await aniDbService.RefreshByID(animeId.Value, AnidbRefreshMethod.Default, cancellationToken: cancellationToken);
+                await aniDbService.RefreshAnimeByID(animeId.Value, AnidbRefreshMethod.Default, cancellationToken: cancellationToken);
             }
         }
 
