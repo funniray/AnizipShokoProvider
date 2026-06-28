@@ -1,7 +1,8 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Reflection;
 using AnizipProvider.model;
 using Microsoft.Extensions.Logging;
+using Shoko.Abstractions.Extensions;
 using Shoko.Abstractions.Metadata.Anidb.Enums;
 using Shoko.Abstractions.Metadata.Anidb.Services;
 using Shoko.Abstractions.Video.Hashing;
@@ -32,10 +33,13 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
 
         if (info is not null)
         {
-            foreach (var animeId in info.CrossReferences.Select(xref => xref.AnidbAnimeID).Distinct())
+            foreach (var xref in info.CrossReferences)
             {
-                if (animeId is null) {continue;}
-                await aniDbService.RefreshAnimeByID(animeId.Value, AnidbRefreshMethod.Default, cancellationToken: cancellationToken);
+                var animeId = xref.AnidbAnimeID;
+                if (animeId is not null)
+                {
+                    await aniDbService.RefreshAnimeByID(animeId.Value, AnidbRefreshMethod.Default, cancellationToken: cancellationToken);
+                }
             }
         }
 
@@ -52,7 +56,10 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
     {
         if (file is null) { return null; }
 
-        List<ReleaseVideoCrossReference> xref = [new() { AnidbAnimeID = file.AnimeId, AnidbEpisodeID = file.EpisodeId }];
+        List<ReleaseVideoCrossReference> xref = 
+        [
+            ReleaseVideoCrossReference.ForAniDB(file.EpisodeId, file.AnimeId)
+        ];
 
         ReleaseGroup? group = null;
 
@@ -69,13 +76,12 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
 
         foreach (var relation in file.Relations)
         {
-            xref.Add(new()
-            {
-                AnidbAnimeID = relation.AnimeId,
-                AnidbEpisodeID = relation.EpisodeId,
-                PercentageEnd = relation.EndPercentage,
-                PercentageStart = relation.StartPercentage
-            });
+            xref.Add(ReleaseVideoCrossReference.ForAniDB(
+                episodeID: relation.EpisodeId,
+                animeID: relation.AnimeId,
+                percentStart: relation.StartPercentage,
+                percentEnd: relation.EndPercentage
+            ));
         }
 
         List<HashDigest> hashes = [new() { Type = "ED2K", Value = file.ED2K }];
