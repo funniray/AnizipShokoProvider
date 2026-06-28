@@ -58,7 +58,7 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
 
         List<ReleaseVideoCrossReference> xref = 
         [
-            new ReleaseVideoCrossReference().ForAniDB(file.EpisodeId, file.AnimeId)
+            ReleaseVideoCrossReference.ForAniDB(file.EpisodeId, file.AnimeId)
         ];
 
         ReleaseGroup? group = null;
@@ -76,7 +76,7 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
 
         foreach (var relation in file.Relations)
         {
-            xref.Add(new ReleaseVideoCrossReference().ForAniDB(
+            xref.Add(ReleaseVideoCrossReference.ForAniDB(
                 episodeID: relation.EpisodeId,
                 animeID: relation.AnimeId,
                 percentStart: relation.StartPercentage,
