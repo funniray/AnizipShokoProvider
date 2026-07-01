@@ -60,6 +60,7 @@ public class AnizipClient
         var response = await _httpClient.GetAsync($"{GetConfig().Host}/file/ed2k/{hash}");
         if (response.StatusCode is HttpStatusCode.NotFound)
         {
+            _logger.LogInformation($"Lookup for ED2K {hash} was not found");
             return null;
         }
         response.EnsureSuccessStatusCode();

@@ -24,7 +24,17 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
         var (video, _) = context;
         var timer = new Stopwatch();
         timer.Start();
-        var file = await anizipClient.GetAnizipFileByED2K(video.ED2K);
+        AnizipFile? file;
+        try
+        {
+            file = await anizipClient.GetAnizipFileByED2K(video.ED2K);
+        } 
+        catch (HttpRequestException ex)
+        {
+            logger.LogError($"Failed to lookup hash ${video.ED2K} with status code ${ex.StatusCode}.\n${ex.Message}");
+            throw ex;
+        }
+
         var time = timer.ElapsedMilliseconds;
 
         logger.LogInformation($"Looked up ED2K {video.ED2K} in {time}ms");
@@ -38,7 +48,7 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
                 var animeId = xref.AnidbAnimeID;
                 if (animeId is not null)
                 {
-                    await aniDbService.RefreshAnimeByID(animeId.Value, AnidbRefreshMethod.Default, cancellationToken: cancellationToken);
+                    await aniDbService.RefreshAnimeByID(animeId.Value, AnidbRefreshMethod.Default | AnidbRefreshMethod.SkipSupplementaryUpdate, cancellationToken: cancellationToken);
                 }
             }
         }
