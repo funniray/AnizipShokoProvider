@@ -17,8 +17,8 @@
 
     <!-- Shoko Core -->
     <ItemGroup>
-        <PackageReference Include="Shoko.Abstractions" Version="6.0.0-alpha.64" />
         <PackageReference Include="Shoko.Abstractions" Version="6.0.0-alpha.77" ExcludeAssets="runtime" />
+        <PackageReference Include="Shoko.BuildTools.Targets" Version="0.1.0" ExcludeAssets="runtime" />
     </ItemGroup>
 
     <ItemGroup>
