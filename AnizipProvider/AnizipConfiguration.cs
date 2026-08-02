@@ -18,6 +18,6 @@ public class AnizipConfiguration : IReleaseInfoProviderConfiguration
     [Visibility(Advanced = true, Size = DisplayElementSize.Full)]
     [Url]
     [Required]
-    [DefaultValue("https://test.ani.zip")]
-    public string Host { get; set; } = "https://test.ani.zip";
+    [DefaultValue("https://files.ani.zip")]
+    public string Host { get; set; } = "https://files.ani.zip";
 }

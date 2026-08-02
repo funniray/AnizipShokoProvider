@@ -4,6 +4,10 @@
         <OutputType>Library</OutputType>
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Title>Anizip Provider</Title>
+        <Authors>revam</Authors>
+        <RepositoryUrl>https://github.com/funniray/AnizipShokoProvider</RepositoryUrl>
+        <Version>1.0.0</Version>
         <Nullable>enable</Nullable>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
@@ -17,7 +21,8 @@
 
     <!-- Shoko Core -->
     <ItemGroup>
-        <PackageReference Include="Shoko.Abstractions" Version="6.0.0-alpha.64" />
+        <PackageReference Include="Shoko.Abstractions" Version="6.0.0-alpha.77" ExcludeAssets="runtime" />
+        <PackageReference Include="Shoko.BuildTools.Targets" Version="0.1.0" ExcludeAssets="runtime" />
     </ItemGroup>
 
     <ItemGroup>

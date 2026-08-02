@@ -1,0 +1,15 @@
+{
+  "id": "13e37522-14a8-5f05-87d4-f196928d95a2",
+  "name": "Anizip Provider",
+  "overview": "Provides an alternative method to resolving AniDB metadata for files",
+  "authors": "funniray",
+  "repository_url": "https://github.com/funniray/AnizipShokoProvider",
+  "homepage_url": null,
+  "tags": [
+    "metadata-provider",
+    "anidb",
+    "anizip"
+  ],
+  "thumbnail": null,
+  "releases": []
+}
