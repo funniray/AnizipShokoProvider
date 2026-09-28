@@ -58,11 +58,11 @@ public class AnizipClient
     }
 
     /// <summary>
-    /// Sends a GET request, reporting a failed connection as the source being unavailable.
+    /// Sends a GET request, reporting a failed connection or a timeout as the source being unavailable.
     /// </summary>
     /// <param name="url">The URL to get</param>
     /// <returns>The response</returns>
-    /// <exception cref="MetadataProviderUnavailableException">ani.zip could not be reached.</exception>
+    /// <exception cref="MetadataProviderUnavailableException">ani.zip could not be reached or did not answer in time.</exception>
     private async Task<HttpResponseMessage> Send(string url)
     {
         try
@@ -72,6 +72,10 @@ public class AnizipClient
         catch (HttpRequestException ex)
         {
             throw new MetadataProviderUnavailableException(_source, $"ani.zip could not be reached: {ex.Message}", innerException: ex);
+        }
+        catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
+        {
+            throw new MetadataProviderUnavailableException(_source, $"ani.zip did not answer in time: {ex.Message}", innerException: ex);
         }
     }
 
