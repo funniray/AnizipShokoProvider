@@ -13,6 +13,22 @@
   "thumbnail": null,
   "releases": [
     {
+      "version": "1.0.1",
+      "tag": "v1.0.1",
+      "source_revision": "2d84b553002ac947465b4215e515f24049b3d19c",
+      "released_at": "2026-10-03T23:22:51Z",
+      "channel": "Stable",
+      "release_notes": null,
+      "archives": [
+        {
+          "runtime": "any",
+          "abstraction": "6.0.0",
+          "url": "https://github.com/funniray/AnizipShokoProvider/releases/download/v1.0.1/AnizipProvider-v1.0.1-any.zip",
+          "checksum": "b87b99dbbeba677c7abf7311d656d6ab1959116ca3ecf1d2e27d7a41ccb8f2d8"
+        }
+      ]
+    },
+    {
       "version": "1.0.0",
       "tag": "v1.0.0",
       "source_revision": "2402993d54180991ea70ac084b7de4d01bee2345",
