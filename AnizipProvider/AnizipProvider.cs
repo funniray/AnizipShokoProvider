@@ -3,8 +3,6 @@ using System.Reflection;
 using AnizipProvider.model;
 using Microsoft.Extensions.Logging;
 using Shoko.Abstractions.Extensions;
-using Shoko.Abstractions.Metadata.Anidb.Enums;
-using Shoko.Abstractions.Metadata.Anidb.Services;
 using Shoko.Abstractions.Video.Hashing;
 using Shoko.Abstractions.Video.Release;
 
@@ -15,8 +13,7 @@ namespace AnizipProvider;
 /// </summary>
 /// <param name="anizipClient">API Client</param>
 /// <param name="logger">Logger</param>
-/// <param name="aniDbService">AniDB Service</param>
-public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> logger, IAnidbService aniDbService) : IReleaseInfoProvider<AnizipConfiguration>
+public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> logger) : IReleaseInfoProvider<AnizipConfiguration>
 {
     /// <inheritdoc/>
     public async Task<ReleaseInfo?> GetReleaseInfoForVideo(ReleaseInfoContext context, CancellationToken cancellationToken)
@@ -40,18 +37,6 @@ public class AnizipProvider(AnizipClient anizipClient, ILogger<AnizipProvider> l
         logger.LogInformation($"Looked up ED2K {video.ED2K} in {time}ms");
 
         var info = ConvertFile(file);
-
-        if (info is not null)
-        {
-            foreach (var xref in info.CrossReferences)
-            {
-                var animeId = xref.AnidbAnimeID;
-                if (animeId is not null)
-                {
-                    await aniDbService.RefreshAnimeByID(animeId.Value, AnidbRefreshMethod.Default | AnidbRefreshMethod.SkipSupplementaryUpdate, cancellationToken: cancellationToken);
-                }
-            }
-        }
 
         return info;
     }
