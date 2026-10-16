@@ -9,7 +9,7 @@ namespace AnizipProvider.model;
 /// <summary>
 /// Configuration for the Anizip release provider.
 /// </summary>
-public class AnizipConfiguration : IReleaseInfoProviderConfiguration
+public class AnizipConfiguration : IReleaseInfoProviderConfiguration, IPluginConfiguration
 {
     /// <summary>
     /// The Anizip API base URL.
