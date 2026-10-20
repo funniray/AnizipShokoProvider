@@ -1,10 +1,11 @@
-﻿using Shoko.Abstractions.Plugin;
+﻿using AnizipProvider.model;
+using Shoko.Abstractions.Plugin;
 using Shoko.Abstractions.Utilities;
 
 namespace AnizipProvider;
 
 /// <inheritdoc/>
-public class Plugin: IPlugin
+public class Plugin : IPlugin<AnizipConfiguration>
 {
     /// <inheritdoc/>
     public Guid ID => UuidUtility.GetV5(typeof(Plugin).FullName!);
