@@ -1,4 +1,4 @@
-﻿using AnizipProvider.model;
+using AnizipProvider.model;
 using Shoko.Abstractions.Plugin;
 using Shoko.Abstractions.Utilities;
 
@@ -13,4 +13,8 @@ public class Plugin : IPlugin<AnizipConfiguration>
     public string Name { get; } = "Anizip Provider";
     /// <inheritdoc/>
     public string Description { get; } = "Provides an alternative method to resolving AniDB metadata for files";
+    /// <inheritdoc/>
+    public string? EmbeddedIconResourceName => "AnizipProvider.assets.Icon.png";
+    /// <inheritdoc/>
+    public string? EmbeddedThumbnailResourceName => "AnizipProvider.assets.Thumbnail.png";
 }
