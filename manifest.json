@@ -6,6 +6,8 @@
   "authors": "funniray",
   "repository_url": "https://github.com/funniray/AnizipShokoProvider",
   "tags": [
+    "service-registration",
+    "release-provider",
     "metadata-provider",
     "anidb",
     "anizip"
@@ -14,12 +16,28 @@
   "icon_url": "https://raw.githubusercontent.com/funniray/AnizipShokoProvider/main/AnizipProvider/assets/Icon.png",
   "releases": [
     {
+      "version": "1.0.3",
+      "tag": "v1.0.3",
+      "released_at": "2026-10-20T23:25:38.0848657Z",
+      "channel": "Stable",
+      "release_notes": "## What\u0027s Changed\r\n* feat: ship icon and thumbnail, build releases with shoko-build by @SilentBot1 in https://github.com/funniray/AnizipShokoProvider/pull/7\r\n\r\n\r\n**Full Changelog**: https://github.com/funniray/AnizipShokoProvider/compare/v1.0.2...v1.0.3",
+      "dependencies": [],
+      "archives": [
+        {
+          "runtime": "any",
+          "abstraction": "6.0.0",
+          "url": "https://github.com/funniray/AnizipShokoProvider/releases/download/v1.0.3/AnizipProvider-v1.0.3-any.zip",
+          "checksum": "sha256:8a6e025162155fdefa014cd7cfe9fc82c6490e31580b3269531d557dac2b4147"
+        }
+      ]
+    },
+    {
       "version": "1.0.2",
       "tag": "v1.0.2",
       "source_revision": "e8f5e608cbc933e9b930ff95f6d449bf9832f968",
       "released_at": "2026-10-20T11:26:31Z",
       "channel": "Stable",
-      "release_notes": "## What's Changed\r\n* chore: bump Shoko.Abstractions to 6.0.0-alpha.105 by @SilentBot1 in https://github.com/funniray/AnizipShokoProvider/pull/4\r\n* Build against Shoko.Abstractions 6.0.0-alpha.105 and report an unreachable ani.zip as unavailable by @revam in https://github.com/funniray/AnizipShokoProvider/pull/5\r\n* Update to Shoko.Abstractions 6.0.0-alpha.108 by @revam in https://github.com/funniray/AnizipShokoProvider/pull/6\r\n\r\n## New Contributors\r\n* @revam made their first contribution in https://github.com/funniray/AnizipShokoProvider/pull/5\r\n\r\n**Full Changelog**: https://github.com/funniray/AnizipShokoProvider/compare/v1.0.1...v1.0.2",
+      "release_notes": "## What\u0027s Changed\r\n* chore: bump Shoko.Abstractions to 6.0.0-alpha.105 by @SilentBot1 in https://github.com/funniray/AnizipShokoProvider/pull/4\r\n* Build against Shoko.Abstractions 6.0.0-alpha.105 and report an unreachable ani.zip as unavailable by @revam in https://github.com/funniray/AnizipShokoProvider/pull/5\r\n* Update to Shoko.Abstractions 6.0.0-alpha.108 by @revam in https://github.com/funniray/AnizipShokoProvider/pull/6\r\n\r\n## New Contributors\r\n* @revam made their first contribution in https://github.com/funniray/AnizipShokoProvider/pull/5\r\n\r\n**Full Changelog**: https://github.com/funniray/AnizipShokoProvider/compare/v1.0.1...v1.0.2",
       "archives": [
         {
           "runtime": "any",
@@ -35,7 +53,7 @@
       "source_revision": "2d84b553002ac947465b4215e515f24049b3d19c",
       "released_at": "2026-10-03T23:22:51Z",
       "channel": "Stable",
-      "release_notes": "## What's Changed\r\n* chore: bump Shoko.Abstractions to 6.0.0-alpha.98 by @SilentBot1 in https://github.com/funniray/AnizipShokoProvider/pull/3\r\n\r\n\r\n**Full Changelog**: https://github.com/funniray/AnizipShokoProvider/compare/v1.0.0...v1.0.1",
+      "release_notes": "## What\u0027s Changed\r\n* chore: bump Shoko.Abstractions to 6.0.0-alpha.98 by @SilentBot1 in https://github.com/funniray/AnizipShokoProvider/pull/3\r\n\r\n\r\n**Full Changelog**: https://github.com/funniray/AnizipShokoProvider/compare/v1.0.0...v1.0.1",
       "archives": [
         {
           "runtime": "any",
@@ -51,7 +69,7 @@
       "source_revision": "2402993d54180991ea70ac084b7de4d01bee2345",
       "released_at": "2026-08-02T00:21:37Z",
       "channel": "Stable",
-      "release_notes": "## What's Changed\r\n* fix: Shoko.Abstractions update by @SilentBot1 in https://github.com/funniray/AnizipShokoProvider/pull/1\r\n* chore: update Shoko dependencies and add manifest + workflow by @SilentBot1 in https://github.com/funniray/AnizipShokoProvider/pull/2\r\n\r\n## New Contributors\r\n* @SilentBot1 made their first contribution in https://github.com/funniray/AnizipShokoProvider/pull/1\r\n\r\n**Full Changelog**: https://github.com/funniray/AnizipShokoProvider/commits/v1.0.0",
+      "release_notes": "## What\u0027s Changed\r\n* fix: Shoko.Abstractions update by @SilentBot1 in https://github.com/funniray/AnizipShokoProvider/pull/1\r\n* chore: update Shoko dependencies and add manifest \u002B workflow by @SilentBot1 in https://github.com/funniray/AnizipShokoProvider/pull/2\r\n\r\n## New Contributors\r\n* @SilentBot1 made their first contribution in https://github.com/funniray/AnizipShokoProvider/pull/1\r\n\r\n**Full Changelog**: https://github.com/funniray/AnizipShokoProvider/commits/v1.0.0",
       "archives": [
         {
           "runtime": "any",
